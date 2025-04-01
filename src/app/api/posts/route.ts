@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Post } from './types'
 
-interface ApiResponse {
+export interface ApiResponse {
   data: Post[]
   error?: string
 }
