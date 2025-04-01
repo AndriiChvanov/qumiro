@@ -15,7 +15,7 @@ export async function GET() {
 
     const data: ApiResponse = await res.json()
     return NextResponse.json(data.data)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Ошибка сервера' }, { status: 500 })
   }
 }
