@@ -35,6 +35,7 @@ export default function Pagination() {
       <div className={classes.pagination}>
         {steps.map((el) => (
           <div
+            key={el}
             onClick={() => setActiveStep(el)}
             className={classNames(classes.button, {
               [classes.active]: activeStep === el,

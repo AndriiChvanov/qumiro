@@ -13,10 +13,6 @@ export async function GET() {
       { cache: 'no-store' }
     )
 
-    if (!res.ok) {
-      throw new Error('Ошибка загрузки данных')
-    }
-
     const data: ApiResponse = await res.json()
     return NextResponse.json(data.data)
   } catch (error) {

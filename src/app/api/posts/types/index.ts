@@ -49,6 +49,6 @@ export interface Post {
   isPublished: boolean
   createdAt: string
   updatedAt: string
-  allReactions: any[]
+  allReactions: []
   tags: Tag[]
 }
