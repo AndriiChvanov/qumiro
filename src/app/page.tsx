@@ -3,6 +3,7 @@
 import { Post } from '@/src/app/api/posts/types'
 import Posts from '@/src/components/Posts'
 import { ApiResponse } from '@/src/app/api/posts/route'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const getPosts = async (): Promise<Post[]> => {
   const res = await fetch(
@@ -12,6 +13,7 @@ const getPosts = async (): Promise<Post[]> => {
   if (!res.ok) throw new Error('Ошибка загрузки данных')
 
   const data: ApiResponse = await res.json()
+
   return data.data
 }
 

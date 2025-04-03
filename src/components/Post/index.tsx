@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { Post as IPost } from '@/src/app/api/posts/types'
 import classes from './style.module.scss'
 import Title from '@/src/components/Post/Title'
-import Image from 'next/image'
+import ImageWithLoading from '@/src/components/ImageWithLoading'
 
 interface Props {
   data: IPost
@@ -13,12 +13,11 @@ function Post(props: Props) {
   return (
     <div className={classes.body} onClick={() => props.onClick(props.data._id)}>
       <Title author={props.data.author} />
-      <Image
+      <ImageWithLoading
         className={classes.img}
-        src={'https://picsum.photos/2540/1080'}
-        alt={'mg'}
-        width={296}
-        height={246}
+        src={`https://api.qumiqo.com/${props.data.preview.thumbnail.filename}`}
+        w={296}
+        h={246}
       />
     </div>
   )

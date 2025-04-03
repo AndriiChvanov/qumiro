@@ -1,47 +1,39 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classes from './style.module.scss'
-import Image from 'next/image'
 import classNames from 'classnames'
+import ImageWithLoading from '@/src/components/ImageWithLoading'
 
-export default function Pagination() {
-  const steps = [1, 2, 3, 4]
-  const [activeStep, setActiveStep] = useState<number>(steps[0])
+interface Props {
+  setActiveStep: (e: number) => void
+  activeStep: number
+  images: string[]
+}
 
+export default function Pagination(props: Props) {
   return (
     <div className={classes.body}>
       <div className={classes.images}>
-        <Image
-          className={classes.img}
-          src={'https://picsum.photos/2540/1080'}
-          alt={'mg'}
-          width={78}
-          height={66}
-        />
-        <Image
-          className={classes.img}
-          src={'https://picsum.photos/2540/1080'}
-          alt={'mg'}
-          width={78}
-          height={66}
-        />
-        <Image
-          className={classes.img}
-          src={'https://picsum.photos/2540/1080'}
-          alt={'mg'}
-          width={78}
-          height={66}
-        />
+        {props.images.map((el, key) => (
+          <ImageWithLoading
+            key={el}
+            className={classes.img}
+            src={el}
+            w={78}
+            h={66}
+            onClick={() => props.setActiveStep(key)}
+          />
+        ))}
       </div>
       <div className={classes.pagination}>
-        {steps.map((el) => (
+        {props.images.map((_, key) => (
           <div
-            key={el}
-            onClick={() => setActiveStep(el)}
+            key={key}
+            onClick={() => props.setActiveStep(key)}
             className={classNames(classes.button, {
-              [classes.active]: activeStep === el,
+              [classes.active]: props.activeStep === key,
             })}
           >
-            {el}
+            {key + 1}
           </div>
         ))}
       </div>

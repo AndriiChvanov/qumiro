@@ -14,6 +14,13 @@
       border: 1px solid #E5E5E5
     }
 
+    .loading {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      border: none;
+    }
+
     .row {
       margin-left: 8px;
       display: flex;
@@ -51,6 +58,7 @@
     .icon {
       width: 16px;
       height: 16px;
+      border-radius: 40px;
     }
   }
 }
